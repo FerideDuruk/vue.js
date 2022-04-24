@@ -7,54 +7,84 @@
 		<style>
 			.special {background:yellow; border: 1px dotted #fe0000; padding:30px; display:block; text-align:center;}
 			.important {font-weight:bold; font-size:30px;}
+
 		</style>
 	</head>
 	<body>
-	
-	<div id="app">
-		<span v-if="profile">
-			Profile of {{profile.fname}} {{profile.lname}} 
-		</span>
-		<span v-else>
-			No Profile Data found.
-		</span>
-	</div>
-	
-	<script>
-	var app = new Vue({
-		el: '#app',
-		
-		data:{
-			/*
-			profile:{
-				fname: "John",
-				lname: "Doe"	
-			}
-			*/
-		}
-		
-	});
-	</script>
-	
+
+		<div id="app">
+			<figure>
+				<img v-if="profile.pic" :src="profile.pic">
+
+				<div v-if="profile.fname && profile.lname">
+					Profile: {{profile.fname}} {{profile.lname}}
+				</div>
+				<div v-else>
+					No First or Last name found.
+				</div>
+
+				<figcaption>
+					<div v-if="profile.desc">
+						Desc: {{profile.desc}}
+					</div>
+					<div v-else>
+						No description found.
+					</div>
+
+					<div v-if="profile.bio">
+						Bio: {{profile.bio}}
+					</div>
+					<div v-else>
+						No bio found.
+					</div>
+				</figcaption>
+			</figure>
+
+
+		</div>
+
+		<script>
+			var app = new Vue({
+				el: '#app',
+
+				data: {
+
+					profile: {
+						fname: "Frida",
+						lname: "Duruk",
+						desc: "Student",
+						bio: "Web developer",
+                        pic: "https://lh3.googleusercontent.com/a-/AOh14Gh-bWpo-2wi5OtXGWIfItLPlEhkuMa2Z6kKuVgNCA=s432-p-rw-no"
+					}
+					
+				}
+
+			});
+		</script>
+
 		<!--
-		//step 1: Read Code Above
-		//step 2: Does the profile show up?
-		
-		v-if="boolean_expression"
-		v-else-if="boolean_expression"
-		v-else
-		
-		
-		You can code an if, else if, else statement into your render using the v-if, v-else-if, v-else.
-		Just like in regular programming, v-else has no condition
-		
-		Notice how the "profile" object is null. Reminder that null is Falsey in the boolean context.
-		
-		ASYNCHRONOUS LEARNING EXERCISE
-		1. Use the profile object to store information about yourself {fname, lname, desc, bio, pic}
-		2. Create a figure, figcaption, and image markup which acts as a description for yourself
-			(Something like this https://www.w3schools.com/howto/howto_css_cards.asp)
-		3. Write conditionals if information is missing (i.e. 'no bio available' if bio is blank, generic image if no pic is found)
-		-->
+	//step 1: Read Code Above
+	//step 2: Does the profile show up?
+
+	v-if="boolean_expression"
+	v-else-if="boolean_expression"
+	v-else
+
+
+	You can code an if, else if, else statement into your render using the v-if, v-else-if, v-else.
+	Just like in regular programming, v-else has no condition
+
+	Notice how the "profile" object is null. Reminder that null is Falsey in the boolean context.
+
+	ASYNCHRONOUS LEARNING EXERCISE
+	1. Use the profile object to store information about yourself {fname, lname, desc, bio, pic}
+	2. Create a figure, figcaption, and image markup which acts as a description for yourself
+		(Something like this https://www.w3schools.com/howto/howto_css_cards.asp)
+	3. Write conditionals if information is missing (i.e. 'no bio available' if bio is blank, generic image if no pic is found)
+	-->
+
+
+
+
 	</body>
 </html>

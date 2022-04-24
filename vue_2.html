@@ -12,16 +12,20 @@
 	<body>
 	
 	<div id="app">
-		<span v-bind:class="{special:true, important:isImportant}">
+		<span v-bind:class="{special:isSpecial, important:isImportant}">
 			look at me!
 		</span>
 	</div>
 	
 	<script>
+		var boolArr = [true, false];
+		randInt1 = Math.floor(Math.random() * boolArr.length)
+        randInt2 = Math.floor(Math.random() * boolArr.length)
 	var app = new Vue({
 		el: '#app',
 		data:{
-			isImportant:true
+            isImportant: boolArr[randInt1],
+            isSpecial: boolArr[randInt2]
 		}
 	});
 	</script>
